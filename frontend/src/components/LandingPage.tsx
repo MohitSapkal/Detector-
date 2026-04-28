@@ -28,7 +28,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
             className={`btn btn-primary ${styles.btnLarge}`}
             onClick={onStart}
           >
-            Launch Detector App →
+            Launch Truth Lenx →
           </button>
           <a href="#features" className={`btn btn-secondary ${styles.btnLarge}`}>
             How it works

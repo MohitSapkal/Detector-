@@ -6,7 +6,7 @@ from datetime import datetime
 
 # ── Page config ─────────────────────────────────────────────
 st.set_page_config(
-    page_title="Misinformation Detector",
+    page_title="Truth Lenx",
     page_icon="🔍",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -415,7 +415,7 @@ st.markdown("""
 <div class="app-header">
   <div class="header-icon">🔍</div>
   <div class="header-text">
-    <h1>Misinformation Detector</h1>
+    <h1>Truth Lenx</h1>
     <p>Paste any claim, headline, or social media post to analyze its credibility in real time</p>
   </div>
 </div>

@@ -162,7 +162,7 @@ export function DetectorApp() {
       <div className={`${styles.header} animate-slide-up delay-100`}>
         <div className={styles.headerIcon}>🔍</div>
         <div className={styles.headerText}>
-          <h1>Misinformation Detector</h1>
+          <h1>Truth Lenx</h1>
           <p>Real-time analysis of claims and headlines</p>
         </div>
       </div>
