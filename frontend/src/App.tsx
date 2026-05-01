@@ -1,15 +1,30 @@
 import { useState, useEffect } from 'react';
 import { LandingPage } from './components/LandingPage';
 import { DetectorApp } from './components/DetectorApp';
+import { EvaluationPage } from './components/EvaluationPage';
 import { Login } from './components/Login';
 import ThemeToggle from './components/ThemeToggle';
 
 type AppState = 'landing' | 'login' | 'app';
+type AppTab = 'detector' | 'evaluation';
+
+const tabStyle = (active: boolean): React.CSSProperties => ({
+  padding: '0.5rem 1.2rem',
+  borderRadius: '10px',
+  border: active ? '1px solid rgba(99,102,241,0.4)' : '1px solid transparent',
+  background: active ? 'rgba(99,102,241,0.12)' : 'transparent',
+  color: active ? '#6366f1' : 'var(--text-secondary)',
+  fontSize: '0.88rem',
+  fontWeight: active ? 600 : 400,
+  cursor: 'pointer',
+  transition: 'all 0.2s ease',
+  fontFamily: 'inherit',
+});
 
 function App() {
   const [view, setView] = useState<AppState>('landing');
+  const [tab, setTab] = useState<AppTab>('detector');
 
-  // Apply saved theme on mount
   useEffect(() => {
     const saved = localStorage.getItem('theme') || 'dark';
     document.documentElement.dataset.theme = saved;
@@ -39,19 +54,37 @@ function App() {
 
         {view === 'app' && (
           <section className="animate-fade-in">
-            <nav style={{ padding: '1.5rem 2rem', borderBottom: '1px solid var(--border-color)', display: 'flex', alignItems: 'center' }}>
-              <button 
-                className="btn btn-secondary" 
+            {/* App nav bar */}
+            <nav style={{
+              padding: '1rem 2rem',
+              borderBottom: '1px solid var(--border-color)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+            }}>
+              <button
+                className="btn btn-secondary"
                 onClick={() => setView('landing')}
-                style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
+                style={{ padding: '0.4rem 0.9rem', fontSize: '0.82rem', marginRight: '1.5rem' }}
               >
-                ← Back to Home
+                ← Home
               </button>
-              <span style={{ marginLeft: 'auto', fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
+
+              {/* Tabs */}
+              <button style={tabStyle(tab === 'detector')} onClick={() => setTab('detector')}>
+                🔍 Analysis Tool
+              </button>
+              <button style={tabStyle(tab === 'evaluation')} onClick={() => setTab('evaluation')}>
+                📊 Evaluation
+              </button>
+
+              <span style={{ marginLeft: 'auto', fontSize: '0.82rem', color: 'var(--text-tertiary)' }}>
                 Logged in
               </span>
             </nav>
-            <DetectorApp />
+
+            {tab === 'detector' && <DetectorApp />}
+            {tab === 'evaluation' && <EvaluationPage />}
           </section>
         )}
       </main>

@@ -1,0 +1,586 @@
+/* ══════════════════════════════════════════
+   EvaluationPage — premium dark dashboard
+   ══════════════════════════════════════════ */
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.headerIcon {
+  font-size: 2.2rem;
+  background: rgba(99, 102, 241, 0.1);
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
+  background: linear-gradient(135deg, #f0ede6, #a0a0a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+}
+
+.headerBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #5a9e2f;
+  background: rgba(90, 158, 47, 0.1);
+  border: 1px solid rgba(90, 158, 47, 0.2);
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #5a9e2f;
+  box-shadow: 0 0 6px #5a9e2f;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Samples */
+.samplesRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.samplesLabel {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+}
+
+.sampleBtns {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.sampleBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.sampleBtn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+}
+
+/* Input card */
+.inputCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.textarea {
+  width: 100%;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-primary);
+  padding: 1.1rem;
+  font-family: inherit;
+  font-size: 0.97rem;
+  min-height: 130px;
+  resize: vertical;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.select {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  min-width: 190px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.actionBtns {
+  display: flex;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.spinnerWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ════ Results Grid ════ */
+.resultsGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* shared card */
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.cardLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 1rem;
+}
+
+/* Gauge */
+.gaugeCard {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gaugeWrap {
+  margin: 0.5rem 0;
+}
+
+.gaugeVerdict {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 0.25rem;
+}
+
+.gaugeSub {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+/* Pie card */
+.pieCard {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.pieStats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.pieStat {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+}
+
+.pieStatDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pieStatLabel {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.pieStatPct {
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+}
+
+/* Metrics breakdown (bar rows) */
+.metricsCard {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+}
+
+.metricsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.metricRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.metricName {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  width: 78px;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+}
+
+.metricTrack {
+  flex: 1;
+  height: 7px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.metricFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metricPct {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  width: 36px;
+  text-align: right;
+}
+
+/* Bar chart */
+.barCard {
+  grid-column: span 6;
+}
+
+/* Radar chart */
+.radarCard {
+  grid-column: span 6;
+}
+
+/* Signals */
+.signalsCard {
+  grid-column: span 12;
+}
+
+.signalsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.signalItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.signalItem:last-child {
+  border-bottom: none;
+}
+
+.signalDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.signalText {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.entities {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.entitiesLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 0.75rem;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tooltip */
+.tooltip {
+  background: #141418;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+}
+
+.tooltipLabel {
+  font-size: 0.78rem;
+  color: #a0a0a8;
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 2px;
+}
+
+.tooltipValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+}
+
+/* History */
+.historySection {
+  margin-top: 2.5rem;
+}
+
+.historySplit {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .historySplit {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sectionLabel {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-tertiary);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 0.75rem;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+}
+
+.histItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.7rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 0.83rem;
+}
+
+.histRank {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  font-family: 'DM Mono', monospace;
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.histText {
+  flex: 1;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.histBadge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  padding: 3px 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+
+/* Distribution card */
+.distCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.distStats {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.distRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+}
+
+.distDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.distName {
+  flex: 1;
+  color: var(--text-secondary);
+}
+
+.distVal {
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+}
+
+/* Empty state */
+.emptyState {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-tertiary);
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.4;
+}
+
+.emptyTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.emptySub {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.emptySub strong {
+  color: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gaugeCard  { grid-column: span 6; }
+  .pieCard    { grid-column: span 6; }
+  .metricsCard { grid-column: span 12; }
+  .barCard    { grid-column: span 12; }
+  .radarCard  { grid-column: span 12; }
+  .signalsCard { grid-column: span 12; }
+}
+
+@media (max-width: 600px) {
+  .gaugeCard  { grid-column: span 12; }
+  .pieCard    { grid-column: span 12; }
+  .page { padding: 1.5rem 1rem 4rem; }
+}
